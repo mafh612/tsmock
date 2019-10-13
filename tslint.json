@@ -1,0 +1,10 @@
+{
+  "extends": "tslint:recommended",
+  "rules": {
+    "interface-name": [true, "never-prefix"],
+    "quotemark": [true, "single"],
+    "semicolon": [true, "never"],
+    "trailing-comma": false,
+    "variable-name": [true, "allow-leading-underscore"]
+  }
+}

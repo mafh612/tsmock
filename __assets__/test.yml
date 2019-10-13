@@ -1,0 +1,135 @@
+openapi: 3.0.2
+info:
+  title: "API"
+  version: "1.0.0"
+servers:
+  - url: http://localhost:5000
+paths:
+  /:
+    get:
+      responses:
+        200:
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+                format: password
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        201:
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: OK
+  /singleparameter/{param1}:
+    get:
+      parameters:
+        - name: param1
+          in: path
+          required: true
+          schema:
+            type: string
+            default: "111"
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  param1:
+                    type: string
+                example:
+                  param1: "111"
+  /multiparameter/{param1}/path/{param2}:
+    get:
+      parameters:
+        - name: param1
+          in: path
+          required: true
+          schema:
+            type: string
+            default: "111"
+        - name: param2
+          in: path
+          required: true
+          schema:
+            type: string
+            default: "222"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/param2response"
+  /diverse/schema:
+    get:
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/diverseschema"
+components:
+  schemas:
+    param2response:
+      type: object
+      properties:
+        param1:
+          type: string
+        param2:
+          type: string
+          format: date
+      example:
+        param1: "111"
+        param2: "222"
+    diverseschema:
+      type: object
+      properties:
+        bool:
+          type: boolean
+        string:
+          type: string
+        byte:
+          type: string
+          format: byte
+        binary:
+          type: string
+          format: binary
+        date:
+          type: string
+          format: date
+        date-time:
+          type: string
+          format: date-time
+        password:
+          type: string
+          format: password
+        int:
+          type: number
+        int32:
+          type: number
+          format: int32
+        int64:
+          type: number
+          format: int64
+        float:
+          type: number
+          format: float
+        double:
+          type: number
+          format: double
