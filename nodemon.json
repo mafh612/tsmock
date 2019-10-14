@@ -1,4 +1,4 @@
 {
-  "exec": "node dist/bin.js apis/cms.yaml",
+  "exec": "node dist/bin.js __assets__/test.yml",
   "watch": ["dist", "__assets__"]
 }
